@@ -1,0 +1,11 @@
+Here we should replace the words that starts with have  
+only: 
+letters (capital and unacapital) 
+{ 
+ also digits (no you cant use undigits test@Am-2); 
+} 
+HEre is some in the middtestle of the word and it should not shtestow in the list. 
+Here is another and some test@!% that should not test%aasd show 
+(in the freaking scary bathroom) 
+MU-Ha-ha-ha 
+

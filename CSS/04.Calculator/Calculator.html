@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title></title>
+    <style type="text/css">		
+		
+        body, input[type=button], input {
+            color: #255083;
+            font-family: Segoe UI, sans-serif;
+			font-size: 12px;
+			font-style: normal;
+			font-variant: normal;
+			font-weight: normal;
+        }
+		
+		#calc-border{
+			border-radius: 5px;			
+			padding: 5px;
+			float: left;
+			background: #b0d0f2; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMTAwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjElIiBzdG9wLWNvbG9yPSIjYjBkMGYyIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMzYlIiBzdG9wLWNvbG9yPSIjZWJmNWZlIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iNzIlIiBzdG9wLWNvbG9yPSIjYWJjYmVhIiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2MxZGNmNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+			background: -moz-linear-gradient(45deg,  #b0d0f2 1%, #ebf5fe 36%, #abcbea 72%, #c1dcf7 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left bottom, right top, color-stop(1%,#b0d0f2), color-stop(36%,#ebf5fe), color-stop(72%,#abcbea), color-stop(100%,#c1dcf7)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(45deg,  #b0d0f2 1%,#ebf5fe 36%,#abcbea 72%,#c1dcf7 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(45deg,  #b0d0f2 1%,#ebf5fe 36%,#abcbea 72%,#c1dcf7 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(45deg,  #b0d0f2 1%,#ebf5fe 36%,#abcbea 72%,#c1dcf7 100%); /* IE10+ */
+			background: linear-gradient(45deg,  #b0d0f2 1%,#ebf5fe 36%,#abcbea 72%,#c1dcf7 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b0d0f2', endColorstr='#c1dcf7',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+
+		}
+		
+		#border-title{
+			margin-bottom: 5px;
+		}
+		
+		.title-name:before{
+			content: url('calculator.png');
+		}
+		
+		.title-name{
+			color: #000;
+			font-weight: bold;
+			font-size: 14px;
+		}
+		
+		.min-max-close{
+			float: right;
+			margin-top: -5px;
+		}
+		
+		.min-max-close:before{
+			content: url('btns.png');			
+		}
+		
+		#calc{
+			border: 1px solid #9facbb;
+			height: auto;
+			width: 407px;	
+			background: -webkit-linear-gradient(#F0F0F0 0, #D9E4F1 100px);
+			background: -moz-linear-gradient(#F0F0F0 0, #D9E4F1 100px);
+			background: -o-linear-gradient(#F0F0F0 0, #D9E4F1 100px);
+			background: linear-gradient(#F0F0F0 0, #D9E4F1 100px);
+		}	
+	
+        input[type=button]{
+			
+			font-weight: bold;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+            width: 35px;
+            height:30px;
+            padding: 2px;
+            font-size: 13px;
+			background: #edf3f9; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNlZGYzZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNkNWUwZWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top, #edf3f9 40%, #d5e0ee 60%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#edf3f9), color-stop(60%,#d5e0ee)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #edf3f9 40%,#d5e0ee 60%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #edf3f9 40%,#d5e0ee 60%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #edf3f9 40%,#d5e0ee 60%); /* IE10+ */
+			background: linear-gradient(to bottom, #edf3f9 40%,#d5e0ee 60%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edf3f9', endColorstr='#d5e0ee',GradientType=0 ); /* IE6-8 */
+        }
+		
+		input[type=button]:hover:not(:disabled){
+			background: #fdedda; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNmZGVkZGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNmYmQyN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top, #fdedda 40%, #fbd27b 60%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fdedda), color-stop(60%,#fbd27b)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #fdedda 40%,#fbd27b 60%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #fdedda 40%,#fbd27b 60%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #fdedda 40%,#fbd27b 60%); /* IE10+ */
+			background: linear-gradient(to bottom, #fdedda 40%,#fbd27b 60%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdedda', endColorstr='#fbd27b',GradientType=0 ); /* IE6-8 */
+			border: 1px solid #fce97e;
+		}
+		
+		input[type=button]:disabled{
+			background: none;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+		}
+        .first{
+			color: #000;
+			font-weight: bold;
+			padding: 3px 0px;
+			width: 100%;
+			height: auto;
+			float: left;
+			background: #f2f5fa; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2YyZjVmYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ2JSIgc3RvcC1jb2xvcj0iI2Q3ZGVmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
+			background: -moz-linear-gradient(top, #f2f5fa 0%, #d7def0 46%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f5fa), color-stop(46%,#d7def0)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #f2f5fa 0%,#d7def0 46%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #f2f5fa 0%,#d7def0 46%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #f2f5fa 0%,#d7def0 46%); /* IE10+ */
+			background: linear-gradient(to bottom, #f2f5fa 0%,#d7def0 46%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5fa', endColorstr='#d7def0',GradientType=0 ); /* IE6-8 */
+			border-bottom: 1px solid #ccc;
+        }
+		
+		.first p{
+			margin: 0px 5px;
+			float: left;
+		}
+		
+		.first p:first-letter{
+			text-decoration: underline;
+		}
+		
+        td fieldset{
+          width:70px; 
+          padding-left: 5px;
+        }
+        
+		input[type=text]{
+			color: #000;
+			width: 96%;
+			margin:5px;
+			text-align: right;
+			border-radius: 3px;
+			-moz-border-radius: 3px;
+			-webkit-border-radius: 3px;
+			height: 50px;
+			font-size: 26px;	
+			margin-top: 8px;
+			border: 1px solid #9facbb;
+			background: #e5eefb; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U1ZWVmYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZWZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top, #e5eefb 0%, #feffff 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5eefb), color-stop(100%,#feffff)); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #e5eefb 0%,#feffff 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #e5eefb 0%,#feffff 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #e5eefb 0%,#feffff 100%); /* IE10+ */
+			background: linear-gradient(to bottom, #e5eefb 0%,#feffff 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5eefb', endColorstr='#feffff',GradientType=0 ); /* IE6-8 */			
+		}
+        
+		.nums_4{
+			letter-spacing: 2px;
+		}
+		
+		.num-btn{
+			background: #f2f8fc !important; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNmMmY4ZmMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNlYmYzZjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+) !important;
+			background: -moz-linear-gradient(top, #f2f8fc 40%, #ebf3f9 60%) !important; /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#f2f8fc), color-stop(60%,#ebf3f9))!important; /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #f2f8fc 40%,#ebf3f9 60%) !important; /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #f2f8fc 40%,#ebf3f9 60%) !important; /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #f2f8fc 40%,#ebf3f9 60%) !important; /* IE10+ */
+			background: linear-gradient(to bottom, #f2f8fc 40%,#ebf3f9 60%) !important; /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f8fc', endColorstr='#ebf3f9',GradientType=0 ) !important; /* IE6-8 */
+		}
+		
+		.num-btn:hover{
+			background: #fdedda !important; /* Old browsers */
+			/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI0MCUiIHN0b3AtY29sb3I9IiNmZGVkZGEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MCUiIHN0b3AtY29sb3I9IiNmYmQyN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+) !important;
+			background: -moz-linear-gradient(top, #fdedda 40%, #fbd27b 60%) !important; /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(40%,#fdedda), color-stop(60%,#fbd27b)) !important; /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top, #fdedda 40%,#fbd27b 60%) !important; /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top, #fdedda 40%,#fbd27b 60%) !important; /* Opera 11.10+ */
+			background: -ms-linear-gradient(top, #fdedda 40%,#fbd27b 60%) !important; /* IE10+ */
+			background: linear-gradient(to bottom, #fdedda 40%,#fbd27b 60%) !important;  /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdedda', endColorstr='#fbd27b',GradientType=0 ) !important; /* IE6-8 */
+		}
+		fieldset{
+			width: 20px;	
+			border-radius: 5px;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			font-weight: bold;
+			vertical-position: middle;
+			padding-right: 0px;
+		}		
+		
+		form{
+			margin-bottom:10px;
+		}	
+		
+		.binary-table{
+			width: 97%;
+			margin: 5px;
+			border: 1px solid #9facbb;
+			border-radius: 3px;
+			font-weight: bold;
+		}
+		.binary-bits{
+			color: #aaa;
+		}
+
+    </style>
+
+</head>
+<body>
+	<div id="calc-border">
+		<div id="border-title">
+			<span class="title-name"> Calculator </span>
+			<span class="min-max-close"> </span>
+		</div>
+		<div id="calc">
+			<form action="">
+				<div class="first">
+					<p>View </p><p >Edit </p><p>Help </p>
+				</div>
+				<div style="clear:both"></div>
+				<input type="text" value="8854455" disabled="disabled"/>
+				<table class="binary-table">
+					<tr>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+					</tr>
+					<tr class="binary-bits">
+						<td colspan="4">63</td>
+						<td colspan="3">47</td>
+						<td style="text-align: right; padding-right: 10px;">32</td>
+					</tr>
+					<tr>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">0000</td>
+						<td class="nums_4">1000</td>
+						<td class="nums_4">0111</td>
+						<td class="nums_4">0001</td>
+						<td class="nums_4">1011</td>
+						<td class="nums_4">0011</td>
+						<td class="nums_4">0111</td>
+					</tr>
+					<tr class="binary-bits">
+						<td colspan="4">31</td>
+						<td colspan="3">15</td>
+						<td style="text-align: right; padding-right: 10px;">0</td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						 <td rowspan="3">
+							<fieldset>
+								<input type="radio" />Hex<br />
+								<input type="radio" checked="checked" />Dec<br />
+								<input type="radio" />Oct<br />
+								<input type="radio" />Bin<br />     
+							</fieldset>
+						</td>
+						<td>
+							<input type="button" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="Mod"/>
+						</td>
+						<td>
+							<input type="button" value="A" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="MC" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="MR" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="MS" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="M+" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="M-" disabled="disabled"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="button" value="("/>
+						</td>
+						<td>
+							<input type="button" value=")"/>
+						</td>
+						<td>
+							<input type="button" value="B" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="<-"/>
+						</td>
+						<td>
+							<input type="button" value="CE"/>
+						</td>
+						<td>
+							<input type="button" value="C" />
+						</td>
+						<td>
+							<input type="button" value="±" />
+						</td>
+						<td>
+							<input type="button" value="v" disabled="disabled"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="button" value="RoL"/>
+						</td>
+						<td>
+							<input type="button" value="RoR"/>
+						</td>
+						<td>
+							<input type="button" value="C" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="7" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="8" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="9" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="/" />
+						</td>
+						<td>
+							<input type="button" value="%" disabled="disabled"/>
+						</td>
+					</tr>
+				
+					<tr>
+						<td rowspan="3">
+							<fieldset>
+								<input type="radio" checked="checked" />QWord<br />
+								<input type="radio" />DWord<br />
+								<input type="radio" />Word<br />
+								<input type="radio" />Byte<br />
+									   
+							</fieldset>
+						</td>
+						<td>
+							<input type="button" value="Or"/>
+						</td>
+						<td>
+							<input type="button" value="Xor"/>
+						</td>
+						<td>
+							<input type="button" value="D" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="4" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="5" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="6" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="*" />
+						</td>
+						<td>
+							<input type="button" value="1/x" disabled="disabled"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="button" value="Lsh"/>
+						</td>
+						<td>
+							<input type="button" value="Rsh"/>
+						</td>
+						<td>
+							<input type="button" value="E" disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="1" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="2" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="3" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="-" />
+						</td>
+						<td rowspan="2" >
+							<input type="button" value="=" style="height:64px;"/>
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<input type="button" value="Not"/>
+						</td>
+						<td>
+							<input type="button" value="And"/>
+						</td>
+						<td>
+							<input type="button" value="F" disabled="disabled"/>
+						</td>
+						<td colspan="2">
+							<input type="button" value="0" style="width:74px;" class="num-btn"/>
+						</td>
+						<td>
+							<input type="button" value="." disabled="disabled"/>
+						</td>
+						<td>
+							<input type="button" value="+"/>
+						</td>
+					
+					</tr>
+				</table>    
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+start - 5
+in - 4
+shit - 2
+restroom - 2
+asfg - 0
